@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B06432801BC48D2900DB7144 /* MigdalEliashbergSolverGeneral.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B064327E1BC48D2900DB7144 /* MigdalEliashbergSolverGeneral.cpp */; };
+		B06432861BC48FB000DB7144 /* HelperModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06432841BC48FB000DB7144 /* HelperModule.cpp */; };
+		B064328B1BC4932F00DB7144 /* ElectronPhononSystemGeneral.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06432891BC4932F00DB7144 /* ElectronPhononSystemGeneral.cpp */; };
 		B0CFA3851BB7C2E1000FACF5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0CFA3841BB7C2E1000FACF5 /* main.cpp */; };
+		B0CFA38F1BB7C625000FACF5 /* MPLPyPlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0CFA38D1BB7C625000FACF5 /* MPLPyPlotter.cpp */; };
+		B0CFA3921BB89DF2000FACF5 /* ElectronPhononSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0CFA3901BB89DF2000FACF5 /* ElectronPhononSystem.cpp */; };
+		B0CFA3961BB89E28000FACF5 /* MigdalEliashbergSolverLorenzian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0CFA3941BB89E28000FACF5 /* MigdalEliashbergSolverLorenzian.cpp */; };
+		B0CFA39A1BB8D45D000FACF5 /* ElectronPhononSystemLorenzian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0CFA3981BB8D45D000FACF5 /* ElectronPhononSystemLorenzian.cpp */; };
+		B0CFA3A11BB8E39B000FACF5 /* Quadrature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0CFA39F1BB8E39B000FACF5 /* Quadrature.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +31,27 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B064327E1BC48D2900DB7144 /* MigdalEliashbergSolverGeneral.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MigdalEliashbergSolverGeneral.cpp; path = Physics/MigdalEliashbergSolverGeneral.cpp; sourceTree = "<group>"; };
+		B064327F1BC48D2900DB7144 /* MigdalEliashbergSolverGeneral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MigdalEliashbergSolverGeneral.h; path = Physics/MigdalEliashbergSolverGeneral.h; sourceTree = "<group>"; };
+		B06432841BC48FB000DB7144 /* HelperModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HelperModule.cpp; path = General/HelperModule.cpp; sourceTree = "<group>"; };
+		B06432851BC48FB000DB7144 /* HelperModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelperModule.h; path = General/HelperModule.h; sourceTree = "<group>"; };
+		B06432891BC4932F00DB7144 /* ElectronPhononSystemGeneral.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ElectronPhononSystemGeneral.cpp; path = Physics/ElectronPhononSystemGeneral.cpp; sourceTree = "<group>"; };
+		B064328A1BC4932F00DB7144 /* ElectronPhononSystemGeneral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElectronPhononSystemGeneral.h; path = Physics/ElectronPhononSystemGeneral.h; sourceTree = "<group>"; };
+		B0A48FAB1BDC7EC400CA72D1 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		B0A48FAC1BDC7ED900CA72D1 /* DeprecatedCode */ = {isa = PBXFileReference; lastKnownFileType = text; path = DeprecatedCode; sourceTree = "<group>"; };
 		B0CFA3811BB7C2E1000FACF5 /* MigdalEliashbergSolver */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MigdalEliashbergSolver; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0CFA3841BB7C2E1000FACF5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		B0CFA3841BB7C2E1000FACF5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; usesTabs = 0; };
+		B0CFA38D1BB7C625000FACF5 /* MPLPyPlotter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MPLPyPlotter.cpp; path = MPLPyPlotter/MPLPyPlotter.cpp; sourceTree = "<group>"; };
+		B0CFA38E1BB7C625000FACF5 /* MPLPyPlotter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPLPyPlotter.h; path = MPLPyPlotter/MPLPyPlotter.h; sourceTree = "<group>"; };
+		B0CFA3901BB89DF2000FACF5 /* ElectronPhononSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ElectronPhononSystem.cpp; path = Physics/ElectronPhononSystem.cpp; sourceTree = "<group>"; };
+		B0CFA3911BB89DF2000FACF5 /* ElectronPhononSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElectronPhononSystem.h; path = Physics/ElectronPhononSystem.h; sourceTree = "<group>"; };
+		B0CFA3941BB89E28000FACF5 /* MigdalEliashbergSolverLorenzian.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MigdalEliashbergSolverLorenzian.cpp; path = Physics/MigdalEliashbergSolverLorenzian.cpp; sourceTree = "<group>"; };
+		B0CFA3951BB89E28000FACF5 /* MigdalEliashbergSolverLorenzian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MigdalEliashbergSolverLorenzian.h; path = Physics/MigdalEliashbergSolverLorenzian.h; sourceTree = "<group>"; };
+		B0CFA3971BB89E81000FACF5 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		B0CFA3981BB8D45D000FACF5 /* ElectronPhononSystemLorenzian.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ElectronPhononSystemLorenzian.cpp; path = Physics/ElectronPhononSystemLorenzian.cpp; sourceTree = "<group>"; };
+		B0CFA3991BB8D45D000FACF5 /* ElectronPhononSystemLorenzian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElectronPhononSystemLorenzian.h; path = Physics/ElectronPhononSystemLorenzian.h; sourceTree = "<group>"; };
+		B0CFA39F1BB8E39B000FACF5 /* Quadrature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Quadrature.cpp; path = Math/Quadrature.cpp; sourceTree = "<group>"; };
+		B0CFA3A01BB8E39B000FACF5 /* Quadrature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Quadrature.h; path = Math/Quadrature.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +65,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B06432881BC48FBF00DB7144 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				B06432841BC48FB000DB7144 /* HelperModule.cpp */,
+				B06432851BC48FB000DB7144 /* HelperModule.h */,
+			);
+			name = General;
+			sourceTree = "<group>";
+		};
+		B064328D1BC4938200DB7144 /* Lorenzian */ = {
+			isa = PBXGroup;
+			children = (
+				B0CFA3991BB8D45D000FACF5 /* ElectronPhononSystemLorenzian.h */,
+				B0CFA3981BB8D45D000FACF5 /* ElectronPhononSystemLorenzian.cpp */,
+				B0CFA3951BB89E28000FACF5 /* MigdalEliashbergSolverLorenzian.h */,
+				B0CFA3941BB89E28000FACF5 /* MigdalEliashbergSolverLorenzian.cpp */,
+			);
+			name = Lorenzian;
+			sourceTree = "<group>";
+		};
+		B064328E1BC4938B00DB7144 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				B064328A1BC4932F00DB7144 /* ElectronPhononSystemGeneral.h */,
+				B06432891BC4932F00DB7144 /* ElectronPhononSystemGeneral.cpp */,
+				B064327F1BC48D2900DB7144 /* MigdalEliashbergSolverGeneral.h */,
+				B064327E1BC48D2900DB7144 /* MigdalEliashbergSolverGeneral.cpp */,
+			);
+			name = General;
+			sourceTree = "<group>";
+		};
 		B0CFA3781BB7C2E1000FACF5 = {
 			isa = PBXGroup;
 			children = (
@@ -57,9 +115,45 @@
 		B0CFA3831BB7C2E1000FACF5 /* MigdalEliashbergSolver */ = {
 			isa = PBXGroup;
 			children = (
+				B06432881BC48FBF00DB7144 /* General */,
+				B0CFA39E1BB8E076000FACF5 /* Math */,
+				B0CFA3931BB89E07000FACF5 /* Physics */,
+				B0CFA38B1BB7C3B8000FACF5 /* MPLPyPlotter */,
 				B0CFA3841BB7C2E1000FACF5 /* main.cpp */,
+				B0A48FAC1BDC7ED900CA72D1 /* DeprecatedCode */,
+				B0A48FAB1BDC7EC400CA72D1 /* Readme.md */,
+				B0CFA3971BB89E81000FACF5 /* main.h */,
 			);
 			path = MigdalEliashbergSolver;
+			sourceTree = "<group>";
+		};
+		B0CFA38B1BB7C3B8000FACF5 /* MPLPyPlotter */ = {
+			isa = PBXGroup;
+			children = (
+				B0CFA38D1BB7C625000FACF5 /* MPLPyPlotter.cpp */,
+				B0CFA38E1BB7C625000FACF5 /* MPLPyPlotter.h */,
+			);
+			name = MPLPyPlotter;
+			sourceTree = "<group>";
+		};
+		B0CFA3931BB89E07000FACF5 /* Physics */ = {
+			isa = PBXGroup;
+			children = (
+				B0CFA3901BB89DF2000FACF5 /* ElectronPhononSystem.cpp */,
+				B0CFA3911BB89DF2000FACF5 /* ElectronPhononSystem.h */,
+				B064328D1BC4938200DB7144 /* Lorenzian */,
+				B064328E1BC4938B00DB7144 /* General */,
+			);
+			name = Physics;
+			sourceTree = "<group>";
+		};
+		B0CFA39E1BB8E076000FACF5 /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				B0CFA39F1BB8E39B000FACF5 /* Quadrature.cpp */,
+				B0CFA3A01BB8E39B000FACF5 /* Quadrature.h */,
+			);
+			name = Math;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,7 +212,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B064328B1BC4932F00DB7144 /* ElectronPhononSystemGeneral.cpp in Sources */,
+				B06432801BC48D2900DB7144 /* MigdalEliashbergSolverGeneral.cpp in Sources */,
 				B0CFA3851BB7C2E1000FACF5 /* main.cpp in Sources */,
+				B0CFA3921BB89DF2000FACF5 /* ElectronPhononSystem.cpp in Sources */,
+				B0CFA39A1BB8D45D000FACF5 /* ElectronPhononSystemLorenzian.cpp in Sources */,
+				B0CFA3961BB89E28000FACF5 /* MigdalEliashbergSolverLorenzian.cpp in Sources */,
+				B0CFA3A11BB8E39B000FACF5 /* Quadrature.cpp in Sources */,
+				B0CFA38F1BB7C625000FACF5 /* MPLPyPlotter.cpp in Sources */,
+				B06432861BC48FB000DB7144 /* HelperModule.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +307,26 @@
 		B0CFA3891BB7C2E1000FACF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/opt/local/include,
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/opt/local/lib,
+					/usr/local/lib,
+				);
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-lgsl",
+					"-lcblas",
+					"-lboost_filesystem",
+					"-lboost_system",
+					"-lconfig++",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -212,6 +334,26 @@
 		B0CFA38A1BB7C2E1000FACF5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/opt/local/include,
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/opt/local/lib,
+					/usr/local/lib,
+				);
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-lgsl",
+					"-lcblas",
+					"-lboost_filesystem",
+					"-lboost_system",
+					"-lconfig++",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -235,6 +377,7 @@
 				B0CFA38A1BB7C2E1000FACF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
