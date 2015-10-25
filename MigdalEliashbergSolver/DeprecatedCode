@@ -1,0 +1,336 @@
+//
+//
+//
+///* do an exhaustive random search over phonon spectra and find the best one */
+///* (this will eventually be incorporated into a genetic algorithm optimization) */
+//void random_search_general() {
+//
+//    string mpl_path = "/Users/mehrtashbabadi/Codes/Python/MPLStdinPlotter/mplstd.py";
+//    string python_path = "/Users/mehrtashbabadi/anaconda/bin/python2.7";
+//    string out_path = "/Users/mehrtashbabadi/Codes/cpp/MigdalEliashbergSolver/Output/random_search N=14 alpha2=0.5 n_os=4";
+//
+//    //MPLPyPlotter mpl(mpl_path, python_path);
+//    //mpl.start();
+//
+//    MigdalEliashbergSolverGeneral solver;
+//    //solver.set_mpl_plotter(&mpl);
+//    solver.set_output_path(out_path);
+//
+//    double alpha2 = 0.5;
+//    double mu_c = 0.0;
+//    double omega_c = 10.0;
+//    size_t N_bin = 14;
+//    size_t N_samp = 1000;
+//    size_t n_os = 4;
+//
+//    size_t order_base = 15;
+//    size_t order_inf = 15;
+//    double eps_f = 1e-2;
+//    size_t N_rep_Z_th = 10;
+//    size_t N_rep_Z_mid = 10;
+//    size_t N_rep_Z_inf = 10;
+//    size_t N_rep_Delta_th = 10;
+//    size_t N_rep_Delta_mid = 10;
+//
+//    double Tc_lo = 1e-4;
+//    double Tc_hi = 0.5;
+//    double tol_Tc_rel = 1e-4;
+//    size_t max_iter = 100;
+//
+//    /* simple stats during run */
+//    vector<double> F_max;
+//    vector<double> F_min;
+//    F_min.resize(N_bin);
+//    F_max.resize(N_bin);
+//    double Tc_max = 0;
+//    double Tc_min = 1e12;
+//
+//    /* random double generator */
+//    srand(static_cast<unsigned int>(time(nullptr)));
+//    auto drand = []() -> double { return static_cast<double>(rand())/RAND_MAX; };
+//
+//    size_t iter = 0;
+//    while (iter<N_samp) {
+//
+//        /* generate random phonon spectrum */
+//        vector<double> F;
+//        F.resize(N_bin);
+//        generate_n(F.begin(), N_bin, drand);
+//
+//        solver.set_sys_params(F, omega_c, mu_c);
+//
+//        /* normalize the Eliashberg function to the desired weight */
+//        transform(F.begin(), F.end(), F.begin(),
+//                  [&](double x) -> double { return x*alpha2/solver.sys->alpha2; });
+//
+//        // helper::cout_vector(F);
+//        solver.set_sys_params(F, omega_c, mu_c);
+//
+//        /* oversample */
+//        solver.sys->update_F_interp_coeffs();
+//        solver.sys->oversample_ph_spect(n_os);
+//
+//        // helper::cout_vector(solver.sys->F_eliash_vec);
+//
+//        solver.report() << "oversampled to " << solver.sys->N_ph << " spectral points." << endl;
+//
+//        solver.set_quad_params(order_base, order_inf, eps_f, N_rep_Z_th, N_rep_Z_mid, N_rep_Z_inf,
+//                               N_rep_Delta_th, N_rep_Delta_mid);
+//
+//        gsl_set_error_handler_off();
+//        setenv("VECLIB_MAXIMUM_THREADS", "4", true);
+//
+//        solver.find_Tc(Tc_lo, Tc_hi, max_iter, tol_Tc_rel);
+//        solver.save_data();
+//
+//        if (solver.Tc>Tc_max) {
+//            Tc_max = solver.Tc;
+//            F_max = F;
+//        }
+//
+//        if (solver.Tc<Tc_min) {
+//            Tc_min = solver.Tc;
+//            F_min = F;
+//        }
+//
+//        cout << endl;
+//        cout << "Highest Tc " << Tc_max << " achived for: " << endl;
+//        helper::cout_vector(F_max);
+//        cout << "Lowest Tc " << Tc_min << " achieved for: " << endl;
+//        helper::cout_vector(F_min);
+//        cout << endl;
+//
+//        iter++;
+//
+//    }
+//
+//    cout << "Max Tc found: " << Tc_max << endl;
+//    cout << "Eliashberg weights: "; helper::cout_vector(F_max);
+//
+//}
+//
+//
+//
+//
+//
+//void test_general_module() {
+//
+//    string mpl_path = "/Users/mehrtashbabadi/Codes/Python/MPLStdinPlotter/mplstd.py";
+//    string python_path = "/Users/mehrtashbabadi/anaconda/bin/python2.7";
+//    MPLPyPlotter mpl(mpl_path, python_path);
+//    mpl.start();
+//
+//    MigdalEliashbergSolverGeneral solver;
+//    solver.set_mpl_plotter(&mpl);
+//
+//    vector<double> F = {1, 2, 4, 2, 1, 0};
+//    double mu_c = 0.0;
+//    double omega_c = 10.0;
+//    solver.set_sys_params(F, omega_c, mu_c);
+//
+//    size_t order_base = 15;
+//    size_t order_inf = 15;
+//    double eps_f = 1e-2;
+//    size_t N_rep_Z_th = 10;
+//    size_t N_rep_Z_mid = 10;
+//    size_t N_rep_Z_inf = 10;
+//    size_t N_rep_Delta_th = 10;
+//    size_t N_rep_Delta_mid = 10;
+//
+//    solver.set_quad_params(order_base, order_inf, eps_f, N_rep_Z_th, N_rep_Z_mid, N_rep_Z_inf,
+//                           N_rep_Delta_th, N_rep_Delta_mid);
+//
+//    gsl_set_error_handler_off();
+//    setenv("VECLIB_MAXIMUM_THREADS", "4", true);
+//
+//    solver.find_Tc(0.001, 2, 100, 1e-4);
+//
+//}
+//
+//
+//
+//void test_lorenzian_module() {
+//
+//    /* instantiate MPLPyPlotter */
+//    string mpl_path = "/Users/mehrtashbabadi/Codes/Python/MPLStdinPlotter/mplstd.py";
+//    string python_path = "/Users/mehrtashbabadi/anaconda/bin/python2.7";
+//    string out_path = "/Users/mehrtashbabadi/Codes/cpp/MigdalEliashbergSolver/Data";
+//
+//    MPLPyPlotter mpl(mpl_path, python_path);
+//    mpl.start();
+//
+//    MigdalEliashbergSolverLorenzian solver;
+//    solver.set_mpl_plotter(&mpl);
+//    solver.set_output_path(out_path);
+//
+//    gsl_set_error_handler_off();
+//    setenv("VECLIB_MAXIMUM_THREADS", "4", true);
+//
+//    /************************************************/
+//
+//    /* quadrature parameters */
+//    int order = 15;
+//    int N_rep_Z = 25;
+//    int N_rep_Delta = 25;
+//    int N_rep_inf = 25;
+//    int N_th = 20;
+//    double eps_f = 1e-4;
+//    double eta = 0.2;
+//
+//    double el_temp, n0, Omega_0, Omega_c, gamma, mu_c;
+//    vector<double> temp_vec, alpha2_vec;
+//
+//    /* parameters */
+//    Omega_0 = 1.0;
+//    Omega_c = 0.5;
+//    gamma   = 0.2;
+//    mu_c    = 0.0;
+//    el_temp = 0.1;
+//    n0      = 0.1;
+//
+//    cout << "T: " << el_temp << " , n0: " << n0 << endl << endl;
+//
+//    /* setup the system parameters */
+//    solver.init_el_ph_system(el_temp, n0, Omega_0, Omega_c, gamma, mu_c);
+//    solver.omega_c = 30*Omega_0;
+//    solver.debug_on();
+//
+//    /* setup the quadrature */
+//    solver.init_quad_normal(order, order, N_rep_inf, eps_f, eta, N_th, N_rep_Z, N_rep_Delta);
+//    solver.test_quad();
+//
+//    /* setup the T_c solver workspace */
+//    solver.alloc_ws_normal();
+//    solver.calc_ws_normal();
+//
+//    /* calculate the critical coupling */
+//    solver.find_alpha2_critical(0.0, 50.0, 100, 1e-8);
+//
+//    /* plot the gap */
+//    gsl_vector * gap_vec = gsl_vector_alloc(solver.N_Delta);
+//    for (size_t j=0; j<solver.N_Delta; j++) {
+//        gsl_vector_set(gap_vec, j, GSL_VECTOR_REAL(solver.Delta_crit, j));
+//    }
+//
+//    mpl.mpl_xy_plot("gap",
+//                    helper::gsl_vector_to_STL_vector(solver.quad_Delta_x),
+//                    helper::gsl_vector_to_STL_vector(gap_vec),
+//                    "$\\omega$", "$Re[\\Delta(\\omega)]$");
+//
+//    /* plot the gap */
+//    gsl_vector * phi_vec = gsl_vector_alloc(solver.N_Delta);
+//    for (size_t j=0; j<solver.N_Delta; j++) {
+//        gsl_vector_set(phi_vec, j, GSL_VECTOR_REAL(solver.phi_crit, j));
+//    }
+//
+//    mpl.mpl_xy_plot("phi",
+//                    helper::gsl_vector_to_STL_vector(solver.quad_Delta_x),
+//                    helper::gsl_vector_to_STL_vector(phi_vec),
+//                    "$\\omega$", "$Re[\\phi(\\omega)]$");
+//
+//    mpl.show();
+//
+//    gsl_vector_free(gap_vec);
+//    gsl_vector_free(phi_vec);
+//
+//    /* delete the workspace */
+//    solver.free_memory();
+//
+//    cout << endl;
+//
+//}
+//
+//void batch_lorenzian_calc() {
+//
+//    /* instantiate MPLPyPlotter */
+//    string mpl_path = "/Users/mehrtashbabadi/Codes/Python/MPLStdinPlotter/mplstd.py";
+//    string python_path = "/Users/mehrtashbabadi/anaconda/bin/python2.7";
+//    string out_path = "/Users/mehrtashbabadi/Codes/cpp/MigdalEliashbergSolver/Data3";
+//
+//    MPLPyPlotter mpl(mpl_path, python_path);
+//    //    mpl.start();
+//
+//    MigdalEliashbergSolverLorenzian solver;
+//    //    solver.set_mpl_plotter(&mpl);
+//    solver.set_output_path(out_path);
+//
+//    gsl_set_error_handler_off();
+//    setenv("VECLIB_MAXIMUM_THREADS", "4", true);
+//
+//    /************************************************/
+//
+//    /* quadrature parameters */
+//    int order = 15;
+//    int N_rep_Z = 25;
+//    int N_rep_Delta = 25;
+//    int N_rep_inf = 25;
+//    int N_th = 20;
+//    double eps_f = 1e-4;
+//    double eta = 0.2;
+//
+//    double el_temp, n0, Omega_0, Omega_c, gamma, mu_c;
+//    vector<double> temp_vec, alpha2_vec;
+//
+//    /* fixed parameters */
+//    Omega_0 = 1.0;
+//    Omega_c = 0.5;
+//    gamma   = 0.2;
+//    mu_c    = 0.0;
+//
+//    double temp_lo = 1e-14;
+//    double temp_hi = 1.0;
+//    size_t N_temp  = 100;
+//
+//    //    double n0_lo   = 0.0;
+//    //    double n0_hi   = 0.5;
+//    //    size_t N_n0    = 50;
+//
+//    double n0_lo   = 0.0;
+//    double n0_hi   = 0.0;
+//    size_t N_n0    = 0;
+//
+//    for (size_t j=0; j<=N_n0; j++) {
+//        for (size_t k=0; k<=N_temp; k++) {
+//
+//            /* the system parameters */
+//            el_temp = temp_lo + k*(temp_hi-temp_lo)/N_temp;
+//            n0      = 1.0 / (exp(1/el_temp) - 1);
+//
+//            cout << "T: " << el_temp << " , n0: " << n0 << endl << endl;
+//
+//            /* setup the system parameters */
+//            solver.init_el_ph_system(el_temp, n0, Omega_0, Omega_c, gamma, mu_c);
+//            solver.omega_c = 30*Omega_0;
+//            solver.debug_on();
+//
+//            /* setup the quadrature */
+//            solver.init_quad_normal(order, order, N_rep_inf, eps_f, eta, N_th, N_rep_Z, N_rep_Delta);
+//            solver.test_quad();
+//
+//            /* setup the T_c solver workspace */
+//            solver.alloc_ws_normal();
+//            solver.calc_ws_normal();
+//
+//            /* calculate the critical coupling */
+//            solver.find_alpha2_critical(0.0, 50.0, 100, 1e-8);
+//
+//            /* save the solution */
+//            solver.save_data();
+//
+//            /* delete the workspace */
+//            solver.free_memory();
+//
+//            cout << endl;
+//
+//        }
+//    }
+//
+//}
+//
+//
+//
+//
+//
+//
+
+
